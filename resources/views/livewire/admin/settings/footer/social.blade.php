@@ -13,7 +13,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mail-body--area">
                     <div class="form-group row">
                         <div class="col-lg-2">
@@ -40,7 +39,8 @@
                             <input placeholder="آیکون" type="text" class="form-control" wire:model="socialIcon1">
                         </div>
                         <div class="col-lg-6">
-                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control" wire:model="socialLink1">
+                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control"
+                                   wire:model="socialLink1">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -48,7 +48,8 @@
                             <input placeholder="آیکون" type="text" class="form-control" wire:model="socialIcon2">
                         </div>
                         <div class="col-lg-6">
-                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control" wire:model="socialLink2">
+                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control"
+                                   wire:model="socialLink2">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -56,7 +57,8 @@
                             <input placeholder="آیکون" type="text" class="form-control" wire:model="socialIcon3">
                         </div>
                         <div class="col-lg-6">
-                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control" wire:model="socialLink3">
+                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control"
+                                   wire:model="socialLink3">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -64,7 +66,8 @@
                             <input placeholder="آیکون" type="text" class="form-control" wire:model="socialIcon4">
                         </div>
                         <div class="col-lg-6">
-                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control" wire:model="socialLink4">
+                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control"
+                                   wire:model="socialLink4">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -72,7 +75,8 @@
                             <input placeholder="آیکون" type="text" class="form-control" wire:model="socialIcon5">
                         </div>
                         <div class="col-lg-6">
-                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control" wire:model="socialLink5">
+                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control"
+                                   wire:model="socialLink5">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -80,7 +84,8 @@
                             <input placeholder="آیکون" type="text" class="form-control" wire:model="socialIcon6">
                         </div>
                         <div class="col-lg-6">
-                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control" wire:model="socialLink6">
+                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control"
+                                   wire:model="socialLink6">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -88,7 +93,8 @@
                             <input placeholder="آیکون" type="text" class="form-control" wire:model="socialIcon7">
                         </div>
                         <div class="col-lg-6">
-                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control" wire:model="socialLink7">
+                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control"
+                                   wire:model="socialLink7">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -96,18 +102,20 @@
                             <input placeholder="آیکون" type="text" class="form-control" wire:model="socialIcon8">
                         </div>
                         <div class="col-lg-6">
-                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control" wire:model="socialLink8">
+                            <input placeholder="لینک شبکه اجتماعی" type="text" class="form-control"
+                                   wire:model="socialLink8">
                         </div>
                     </div>
 
 
+                    <button wire:click='update' type="submit" class="btn btn-outline-success mb-2 mr-2"
+                            style="float:right;"><i class="fa fa-save"></i> ذخیره
+                    </button>
 
-                    <button wire:click='update' type="submit" class="btn btn-outline-success mb-2 mr-2" style="float:right;"><i class="fa fa-save"></i> ذخیره</button>
 
-
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

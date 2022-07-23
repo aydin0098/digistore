@@ -1,37 +1,17 @@
-    <!--   Footer---------------------------->
-    <footer>
+ <footer>
         <div class="footer-jump">
             <a href="#">
                 <span class="footer-jump-angle"><i class="fa fa-angle-up"></i>{{$footer->upLabel}}</span>
             </a>
         </div>
-
         <div class="container">
             <div class="footer-inner-box">
-                <a href="#" class="footer-badge">
-                    <img src="{{asset('home/assets/images/footer-svg/delivery.svg')}}" alt="badge">
-                    <span class="item-feature">تحویل اکسپرس</span>
+                @foreach($topLogo as $logo)
+                <a href="{{$logo->url}}" class="footer-badge">
+                    <img src="{{url($logo->image)}}" alt="badge">
+                    <span class="item-feature">{{$logo->title}}</span>
                 </a>
-
-                <a href="#" class="footer-badge">
-                    <img src="{{asset('home/assets/images/footer-svg/contact-us.svg')}}" alt="badge">
-                    <span class="item-feature">پشتیبانی 24 ساعته</span>
-                </a>
-
-                <a href="#" class="footer-badge">
-                    <img src="{{asset('home/assets/images/footer-svg/payment-terms.svg')}}" alt="badge">
-                    <span class="item-feature">پرداخت در منزل</span>
-                </a>
-
-                <a href="#" class="footer-badge">
-                    <img src="{{asset('home/assets/images/footer-svg/return-policy.svg')}}" alt="badge">
-                    <span class="item-feature">7 روز ضمانت برگشت</span>
-                </a>
-
-                <a href="#" class="footer-badge">
-                    <img src="{{asset('home/assets/images/footer-svg/origin-guarantee.svg')}}" alt="badge">
-                    <span class="item-feature">ضمانت اصل بودن کالا</span>
-                </a>
+                @endforeach
             </div>
         </div>
         <div class="col-12">
@@ -41,31 +21,27 @@
                         <div class="links-col">
                             <a href="#" class="head-line">{{$footer->widgetLabel1}}</a>
                             <ul class="links-ul">
-                                <li><a href="#">نحوه ثبت سفارش</a></li>
-                                <li><a href="#">رویه ارسال سفارش</a></li>
-                                <li><a href="#">شیوه‌های پرداخت</a></li>
+                                @foreach($menus1 as $menu)
+                                <li><a href="{{$menu->url}}">{{$menu->title}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
 
                         <div class="links-col">
                             <a href="#" class="head-line">{{$footer->widgetLabel2}}</a>
                             <ul class="links-ul">
-                                <li><a href="#">پرسش یه پاسخ های متداول</a></li>
-                                <li><a href="#">رویه های بازگرداندن کالا</a></li>
-                                <li><a href="#">شرایط استفاده</a></li>
-                                <li><a href="#">حریم خصوصی</a></li>
-                                <li><a href="#">گزارش باگ</a></li>
+                                @foreach($menus2 as $menu)
+                                    <li><a href="{{$menu->url}}">{{$menu->title}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
 
                         <div class="links-col">
                             <a href="#" class="head-line">{{$footer->widgetLabel3}}</a>
                             <ul class="links-ul">
-                                <li><a href="#">اتاق خبر دیجی استور</a></li>
-                                <li><a href="#">فروش در دیجی استور</a></li>
-                                <li><a href="#">فرصت های شغلی</a></li>
-                                <li><a href="#">تماس با دیجی استور</a></li>
-                                <li><a href="#">درباره ما دیجی استور</a></li>
+                                @foreach($menus3 as $menu)
+                                    <li><a href="{{$menu->url}}">{{$menu->title}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
 
@@ -131,29 +107,12 @@
                     </p>
 
                     <div class="footer-inner-box">
-                        <a href="#" class="footer-badge">
-                            <img src="{{asset('home/assets/images/footer-svg/footer-1.svg')}}" style="width: 130px !important;"
+                        @foreach($bottomLogo as $logo)
+                        <a href="{{$logo->url}}" class="footer-badge">
+                            <img src="{{url($logo->image)}}" style="width: 130px !important;"
                                 alt="badge">
                         </a>
-
-                        <a href="#" class="footer-badge">
-                            <img src="{{asset('home/assets/images/footer-svg/footer-2.svg')}}" style="width: 130px !important;"
-                                alt="badge">
-                        </a>
-
-                        <a href="#" class="footer-badge">
-                            <img src="{{asset('home/assets/images/footer-svg/footer-3.svg')}}" style="width: 130px !important;"
-                                alt="badge">
-                        </a>
-
-                        <a href="#" class="footer-badge">
-                            <img src="{{asset('home/assets/images/footer-svg/footer-4.svg')}}" style="width: 130px !important;"
-                                alt="badge">
-                        </a>
-                        <a href="#" class="footer-badge">
-                            <img src="{{asset('home/assets/images/footer-svg/footer-5.svg')}}" style="width: 130px !important;"
-                                alt="badge">
-                        </a>
+                        @endforeach
                     </div>
                 </div>
 

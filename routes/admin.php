@@ -2,7 +2,7 @@
 
 use App\Http\Livewire\Admin\Dashboard\Index;
 use App\Http\Livewire\Admin\Settings\Footer\Label;
-use App\Http\Livewire\Admin\Settings\Footer\Logo;
+
 use App\Http\Livewire\Admin\Settings\Footer\Social;
 use Illuminate\Support\Facades\Route;
 
@@ -18,11 +18,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',Index::class)->name('admin.index');
-// Footer Settings
+// Settings
 Route::prefix('settings')->group(function () {
+    /////////////////////////////////////Footer Routes //////////////////////////////////////
+    Route::prefix('footer')->group(function (){
 
-    Route::get('/footer/label',Label::class)->name('admin.setting.footer.label');
-    Route::get('/footer/socials',Social::class)->name('admin.setting.footer.social');
-    Route::get('/footer/logos',Logo::class)->name('admin.setting.footer.logo');
+        Route::get('/label',Label::class)->name('admin.setting.footer.label');
+        Route::get('/socials',Social::class)->name('admin.setting.footer.social');
+        //Footer Logos
+        Route::get('/logos',\App\Http\Livewire\Admin\Settings\Footer\Logo\Index::class)->name('admin.setting.footer.logo.index');
+        Route::get('/logos/{footerLogo}', \App\Http\Livewire\Admin\Settings\Footer\Logo\Update::class)->name('admin.setting.footer.logo.update');
+        Route::get('/logo/trashed', \App\Http\Livewire\Admin\Settings\Footer\Logo\Trashed::class)->name('admin.setting.footer.logo.trashed');
+        //Footer Menus
+        Route::get('/menus',\App\Http\Livewire\Admin\Settings\Footer\Menu\Index::class)->name('admin.setting.footer.menu.index');
+        Route::get('/menus/{footerMenu}', \App\Http\Livewire\Admin\Settings\Footer\Menu\Update::class)->name('admin.setting.footer.menu.update');
+        //Footer Apps Access
+        Route::get('/apps',\App\Http\Livewire\Admin\Settings\Footer\Apps::class)->name('admin.setting.footer.apps');
+    });
+
 
 });

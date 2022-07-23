@@ -50,7 +50,7 @@
 
             <!-- Main Content Area -->
             <div class="main-content">
-                
+
             @include('livewire.admin.layouts.breadcrumb')
 
                 <div class="dashboard-area">

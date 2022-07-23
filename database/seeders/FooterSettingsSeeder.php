@@ -56,6 +56,8 @@ class FooterSettingsSeeder extends Seeder
             ],
         ];
 
+
+
         foreach ($footers as $footer){
             $check = DB::connection('mysql_settings')->table('footers')->first();
             if (!$check){
@@ -95,6 +97,214 @@ class FooterSettingsSeeder extends Seeder
                     'socialLink8' => $footer['socialLink8'] ,
                     'socialIcon9' => $footer['socialIcon9'] ,
                     'socialLink9' => $footer['socialLink9'] ,
+                ]);
+            }
+
+        }
+
+        //Logos
+        $logos = [
+            1 => [
+                'id' => 1,
+                'title'=> 'تحویل اکسپرس',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/1.svg',
+                'type'=> 'top',
+                'status'=> 1,
+
+            ],
+            2 => [
+                'id' => 2,
+                'title'=> 'پشتیبانی 24 ساعته',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/2.svg',
+                'type'=> 'top',
+                'status'=> 1,
+
+            ],
+            3 => [
+                'id' => 3,
+                'title'=> 'پرداخت در منزل',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/3.svg',
+                'type'=> 'top',
+                'status'=> 1,
+
+            ],
+            4 => [
+                'id' => 4,
+                'title'=> '7 روز ضمانت برگشت',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/4.svg',
+                'type'=> 'top',
+                'status'=> 1,
+
+            ],
+            5 => [
+                'id' => 5,
+                'title'=> 'ضمانت اصل بودن کالا',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/5.svg',
+                'type'=> 'top',
+                'status'=> 1,
+
+            ],
+            6 => [
+                'id' => 6,
+                'title'=> '',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/6.svg',
+                'type'=> 'bottom',
+                'status'=> 1,
+
+            ],
+            7 => [
+                'id' => 7,
+                'title'=> '',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/7.svg',
+                'type'=> 'bottom',
+                'status'=> 1,
+
+            ],
+            8 => [
+                'id' => 8,
+                'title'=> '',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/8.svg',
+                'type'=> 'bottom',
+                'status'=> 1,
+
+            ],
+            9 => [
+                'id' => 9,
+                'title'=> '',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/9.svg',
+                'type'=> 'bottom',
+                'status'=> 1,
+
+            ],
+            10 => [
+                'id' => 10,
+                'title'=> '',
+                'url' => '#',
+                'image'=> '/home/assets/images/footer-svg/10.svg',
+                'type'=> 'bottom',
+                'status'=> 1,
+
+            ],
+        ];
+
+        foreach ($logos as $logo){
+            $check = DB::connection('mysql_settings')->table('footer_logos')->
+            where('image',$logo['image'])->first();
+            if (!$check){
+                DB::connection('mysql_settings')->table('footer_logos')->insert([
+                    'title' => $logo['title'] ,
+                    'url' => $logo['url'] ,
+                    'image' => $logo['image'] ,
+                    'type' => $logo['type'] ,
+                    'status' => $logo['status'] ,
+                ]);
+            }
+        }
+
+        //Menus
+        $menus = [
+            1 => [
+                'id' => 1,
+                'title'=> 'نحوه ثبت سفارش',
+                'url' => '#',
+                'type'=> 'widgetLabel1',
+
+
+            ],
+            2 => [
+                'id' => 2,
+                'title'=> 'رویه ارسال سفارش',
+                'url' => '#',
+                'type'=> 'widgetLabel1',
+            ],
+            3 => [
+                'id' => 3,
+                'title'=> 'شیوه‌های پرداخت',
+                'url' => '#',
+                'type'=> 'widgetLabel1',
+
+
+            ],
+            4 => [
+                'id' => 4,
+                'title'=> 'پرسش یه پاسخ های متداول',
+                'url' => '#',
+                'type'=> 'widgetLabel2',
+            ],
+            5 => [
+                'id' => 5,
+                'title'=> 'رویه های بازگرداندن کالا',
+                'url' => '#',
+                'type'=> 'widgetLabel2',
+            ],
+            6 => [
+                'id' => 6,
+                'title'=> 'شرایط استفاده',
+                'url' => '#',
+                'type'=> 'widgetLabel2',
+            ],
+            7 => [
+                'id' => 7,
+                'title'=> 'حریم خصوصی',
+                'url' => '#',
+                'type'=> 'widgetLabel2',
+            ],
+            8 => [
+                'id' => 1,
+                'title'=> 'گزارش باگ',
+                'url' => '#',
+                'type'=> 'widgetLabel2',
+            ],
+
+            9 => [
+                'id' => 9,
+                'title'=> 'اتاق خبر دیجی استور',
+                'url' => '#',
+                'type'=> 'widgetLabel3',
+            ],
+            10 => [
+                'id' => 10,
+                'title'=> 'فروش در دیجی استور',
+                'url' => '#',
+                'type'=> 'widgetLabel3',
+            ],
+            11 => [
+                'id' => 11,
+                'title'=> 'فرصت های شغلی',
+                'url' => '#',
+                'type'=> 'widgetLabel3',
+            ],
+            12 => [
+                'id' => 12,
+                'title'=> 'تماس با دیجی استور',
+                'url' => '#',
+                'type'=> 'widgetLabel3',
+            ],
+            13 => [
+                'id' => 13,
+                'title'=> 'درباره ما دیجی استور',
+                'url' => '#',
+                'type'=> 'widgetLabel3',
+            ],
+        ];
+
+        foreach ($menus as $menu){
+            $check = DB::connection('mysql_settings')->table('footer_menus')->
+            where('title',$menu['title'])->first();
+            if (!$check){
+                DB::connection('mysql_settings')->table('footer_menus')->insert([
+                    'title' => $menu['title'] ,
+                    'url' => $menu['url'] ,
+                    'type' => $menu['type'] ,
                 ]);
             }
         }

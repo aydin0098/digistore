@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\FooterLogo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,5 +23,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(FooterSettingsSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

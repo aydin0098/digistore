@@ -137,11 +137,13 @@
                         </ul>
                     </li> --}}
 
-                    <li class="treeview {{request()->routeIs('admin.setting.footer.label') ? 'active' : ''}} ">
+                    <li class="treeview {{request()->routeIs('admin.setting.footer.label')
+                    || request()->routeIs('admin.setting.footer.logo') || request()->routeIs('admin.setting.footer.social') ? 'active' : ''}} ">
                         <a href="javascript:void(0)"><i class="zmdi zmdi-settings"></i> <span>تنظیمات</span> <i class="fa fa-angle-left"></i></a>
                         <ul class="treeview-menu">
                             <!-- تنظیمات فوتر-برچسب ها-تنظیمات عمومی(لوگو و ...) -  -->
-                            <li><a style="color: {{request()->routeIs('admin.setting.footer.label') ? '#54c6d0' : ''}}" href="{{route('admin.setting.footer.label')}}">تنظیمات فوتر سایت</a></li>
+                            <li><a style="color: {{request()->routeIs('admin.setting.footer.label')
+                     || request()->routeIs('admin.setting.footer.logo') || request()->routeIs('admin.setting.footer.social') ? '#54c6d0' : ''}}" href="{{route('admin.setting.footer.label')}}">تنظیمات فوتر سایت</a></li>
                             <!-- استان و شهر و ... -  -->
                             <li><a href="{{request()->url()}}">تنظیمات فروشگاه</a></li>
                         </ul>

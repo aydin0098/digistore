@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::connection('mysql_settings')->create('footers', function (Blueprint $table) {
             $table->id();
-            $table->string('upLable')->nullable();
+            $table->string('upLabel')->nullable();
 
             $table->string('widgetLabel1')->nullable();
             $table->string('widgetLabel2')->nullable();
@@ -57,6 +57,13 @@ return new class extends Migration
             $table->string('socialIcon8')->nullable();
             $table->string('socialLink9')->nullable();
             $table->string('socialIcon9')->nullable();
+
+            $table->string('enamad')->nullable();
+            $table->string('linkApp1')->nullable();
+            $table->string('imageApp1')->nullable();
+            $table->string('linkApp2')->nullable();
+            $table->string('imageApp2')->nullable();
+
         });
 
         //Footer Logos
@@ -64,9 +71,21 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('image');
+            $table->string('url')->nullable();
             $table->enum('type',['top','bottom']);
+            $table->integer('status')->nullable();
             $table->softDeletes();
+            $table->timestamps();
         });
+        //Footer Menus
+        Schema::connection('mysql_settings')->create('footer_menus', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('url')->nullable();
+            $table->enum('type',['widgetLabel1','widgetLabel2','widgetLabel3']);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -76,6 +95,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::connection('mysql_settings')->dropIfExists('footer_menus');
         Schema::connection('mysql_settings')->dropIfExists('footer_logos');
         Schema::connection('mysql_settings')->dropIfExists('footers');
     }
