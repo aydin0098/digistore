@@ -4,12 +4,14 @@ namespace App\Http\Livewire\Admin\Settings\Footer\Logo;
 
 use App\Models\Admin\Log;
 use App\Models\Admin\Settings\FooterLogo;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Update extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
 
     public $title;
@@ -48,6 +50,7 @@ class Update extends Component
 
     public function render()
     {
+        $this->authorize('setting-footer-logo',FooterLogo::class);
        $logo = $this->footerLogo;
         return view('livewire.admin.settings.footer.logo.update',compact('logo'));
     }

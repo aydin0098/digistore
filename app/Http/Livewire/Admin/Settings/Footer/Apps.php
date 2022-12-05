@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Admin\Settings\Footer;
 
 use App\Models\Admin\Log;
+use App\Models\Admin\Settings\Footer;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -10,6 +12,8 @@ use Livewire\WithFileUploads;
 class Apps extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
+
     public $enamad;
     public $linkApp1;
     public $imageApp1;
@@ -50,6 +54,7 @@ class Apps extends Component
     {
         // $footer = DB::connection('mysql_settings')->table('footers')->get();
         // $footer = $footer[0];
+        $this->authorize('setting-footer-apps',Footer::class);
         return view('livewire.admin.settings.footer.apps');
     }
 }

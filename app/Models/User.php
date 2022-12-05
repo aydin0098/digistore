@@ -66,6 +66,19 @@ class User extends Authenticatable
 
     }
 
+    public function hasPermission($permission)
+    {
+        return $this->permissions->contains('title',$permission->title) || $this->hasRole($permission->roles);
+
+
+    }
+
+    public function hasRole($roles)
+    {
+        return !! $roles->intersect($this->roles)->all();
+
+    }
+
     //sendSms
     public static function sendSms($code, $mobile)
     {

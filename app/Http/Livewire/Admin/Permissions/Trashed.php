@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Permissions;
 use App\Models\Admin\Log;
 use App\Models\Admin\Permissions\Permission;
 use App\Models\Admin\Permissions\Role;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -13,6 +14,7 @@ class Trashed extends Component
 {
     use WithFileUploads;
     use WithPagination;
+    use AuthorizesRequests;
 
 
 
@@ -58,6 +60,7 @@ class Trashed extends Component
 
     public function render()
     {
+        $this->authorize('manage_permissions',Permission::class);
         $permissions = $this->readyToLoad ? Permission::where('description','LIKE','%'.$this->search.'%')->orderBy('id','desc')
             ->onlyTrashed()->paginate(10):[];
         return view('livewire.admin.permissions.trashed',compact('permissions'));

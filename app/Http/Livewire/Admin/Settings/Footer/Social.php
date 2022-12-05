@@ -3,11 +3,14 @@
 namespace App\Http\Livewire\Admin\Settings\Footer;
 
 use App\Models\Admin\Log;
+use App\Models\Admin\Settings\SocialFooter;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Social extends Component
 {
+    use AuthorizesRequests;
     public $email;
     public $phone;
     public $socialIcon1;
@@ -87,6 +90,7 @@ class Social extends Component
 
     public function render()
     {
+        $this->authorize('setting-footer-social',SocialFooter::class);
         return view('livewire.admin.settings.footer.social');
     }
 }

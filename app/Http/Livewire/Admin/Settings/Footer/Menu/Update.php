@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Admin\Settings\Footer\Menu;
 
 use App\Models\Admin\Log;
+use App\Models\Admin\Settings\FooterLogo;
 use App\Models\Admin\Settings\FooterMenu;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,6 +13,7 @@ use Livewire\WithFileUploads;
 class Update extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
 
     public $title;
@@ -41,6 +44,7 @@ class Update extends Component
 
     public function render()
     {
+        $this->authorize('setting-footer-menu',FooterMenu::class);
         $menu = $this->footerMenu;
         $footer = DB::connection('mysql_settings')->table('footers')->first();
         $headerMenu[] = $footer->widgetLabel1;

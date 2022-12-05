@@ -5,16 +5,18 @@ namespace App\Http\Livewire\Admin\Permissions;
 use App\Models\Admin\Log;
 use App\Models\Admin\Permissions\Permission;
 use App\Models\Admin\Permissions\Role;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Index extends Component
 {
     use WithPagination;
+    use AuthorizesRequests;
 
     public $title;
     public $description;
-    public $role;
+    public $roles;
 
 
     public $readyToLoad = false;
@@ -35,8 +37,7 @@ class Index extends Component
 
     protected $rules = [
         'permission.title' => 'required',
-        'permission.description' => 'required',
-        'role' => 'required',
+        'permission.description' => 'required'
     ];
 
     public function store()
@@ -46,7 +47,7 @@ class Index extends Component
             'title'    => $this->permission->title ,
             'description'     => $this->permission->description,
         ]);
-        $permission->roles()->sync($this->role);
+        $permission->roles()->sync($this->roles);
 
         $this->resetForm();
 
@@ -58,7 +59,7 @@ class Index extends Component
     {
         $this->permission->title = null;
         $this->permission->description = null;
-        $this->permission->role = null;
+        $this->roles = '';
 
 
     }
@@ -88,8 +89,8 @@ class Index extends Component
 
     public function render()
     {
+        $this->authorize('manage_permissions',Permission::class);
         $permissions = $this->readyToLoad ? Permission::where('description','LIKE','%'.$this->search.'%')->latest()->paginate(10):[];
-        $roles =  Role::all();
-        return view('livewire.admin.permissions.index',compact('permissions','roles'));
+        return view('livewire.admin.permissions.index',compact('permissions'));
     }
 }

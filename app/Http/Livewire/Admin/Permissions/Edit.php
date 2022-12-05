@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Admin\Permissions;
 use App\Models\Admin\Log;
 use App\Models\Admin\Permissions\Permission;
 use App\Models\Admin\Permissions\Role;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class Edit extends Component
 {
+    use AuthorizesRequests;
     public Permission $permission;
     public $title;
     public $description;
@@ -17,7 +19,6 @@ class Edit extends Component
     protected $rules = [
         'permission.title' => 'required',
         'permission.description' => 'required',
-        'roles' => 'required'
     ];
 
     public function store()
@@ -34,6 +35,7 @@ class Edit extends Component
 
     public function render()
     {
+        $this->authorize('manage_permissions',Permission::class);
         $permission = $this->permission;
         $permissions = Permission::all();
         return view('livewire.admin.permissions.edit',compact('permission'));

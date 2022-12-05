@@ -31,13 +31,13 @@
                         <div class="form-group">
                             <label for="exampleInputEmail12">نقش ها:</label>
                             <div wire:ignore>
-                                <select id="roles" wire:model.lazy="role" class=" js-example-basic-single form-control"
-                                        multiple name="" style="width: 100%;">
-                                    @foreach($roles as $role)
-                                        <option value="{{$role->id}}">{{$role->description}}</option>
+                                <select class="js-example-basic-single form-control" multiple="multiple"
+                                        wire:model.lazy="roles" id="roles" style="width: 100%;">
+                                    @foreach (\App\Models\Admin\Permissions\Role::all() as $role)
+                                        <option value="{{ $role->id }}">{{ $role->description }}
+                                        </option>
                                     @endforeach
                                 </select>
-
                             </div>
                         </div>
                         <button type="submit" class="btn btn-outline-success mb-2 mr-2" style="float:left;"><i
@@ -138,10 +138,11 @@
             $('#roles').select2();
             $('#roles').on('change', function (e) {
                 let data = $(this).val();
-            @this.set('role', data);
+            @this.set('roles', data);
             });
             window.livewire.on('store', () => {
                 $('#roles').select2();
+
             });
         });
     </script>

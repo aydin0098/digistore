@@ -1,7 +1,10 @@
 <div class="ecaps-sidemenu-area">
     <!-- Desktop Logo -->
     <div class="ecaps-logo">
-        <a href="{{route('home.index')}}"><img class="desktop-logo" src="{{asset('back/img/core-img/logo.png')}}" alt="لوگوی دسک تاپ"> <img class="small-logo" src="img/core-img/small-logo.png" alt="آرم موبایل"></a>
+        <a href="{{route('home.index')}}"><img class="desktop-logo" src="{{asset('back/img/core-img/logo.png')}}"
+                                               alt="لوگوی دسک تاپ"> <img class="small-logo"
+                                                                         src="img/core-img/small-logo.png"
+                                                                         alt="آرم موبایل"></a>
     </div>
 
     <!-- Side Nav -->
@@ -12,17 +15,54 @@
 
             <nav>
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="{{request()->routeIs('admin.index') ? 'active' : '' }}"><a href="{{route('admin.index')}}"><i class="zmdi zmdi-view-dashboard"></i><span>داشبورد</span></a></li>
-
-                    <li class="treeview {{request()->routeIs('admin.roles.index')
-                    || request()->routeIs('admin.permissions.index') ? 'active' : ''}}">
-                        <a href="javascript:void(0)"><i class="fa fa-user-secret"></i> <span>سطوح دسترسی</span> <i class="fa fa-angle-left"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a style="color: {{request()->routeIs('admin.roles.index') ? '#54c6d0' : '' }}" href="{{route('admin.roles.index')}}">نقش ها</a></li>
-                            <li><a style="color: {{request()->routeIs('admin.permissions.index') ? '#54c6d0' : '' }}" href="{{route('admin.permissions.index')}}">سطح دسترسی</a></li>
-                        </ul>
+                    <li class="{{request()->routeIs('admin.index') ? 'active' : '' }}"><a
+                            href="{{route('admin.index')}}"><i class="zmdi zmdi-view-dashboard"></i><span>داشبورد</span></a>
                     </li>
 
+                    @canany(['manage_roles','manage_permissions'])
+                    <li class="treeview {{request()->routeIs('admin.roles.index')
+                    || request()->routeIs('admin.permissions.index') ? 'active' : ''}}">
+                        <a href="javascript:void(0)"><i class="fa fa-user-secret"></i> <span>سطوح دسترسی</span> <i
+                                class="fa fa-angle-left"></i></a>
+                        <ul class="treeview-menu">
+                            @can('manage_roles')
+                            <li><a style="color: {{request()->routeIs('admin.roles.index') ? '#54c6d0' : '' }}"
+                                   href="{{route('admin.roles.index')}}">نقش ها</a></li>
+                            @endcan
+                            @can('manage_permissions')
+                                <li><a style="color: {{request()->routeIs('admin.permissions.index') ? '#54c6d0' : '' }}"
+                                   href="{{route('admin.permissions.index')}}">سطح دسترسی</a></li>
+                                @endcan
+                        </ul>
+                    </li>
+                    @endcanany
+
+                    @can('manage_logs')
+                    <li>
+                        <a style="color: {{request()->routeIs('admin.logs') ? '#54c6d0' : '' }}"
+                           href="{{route('admin.logs')}}">
+                            <i class="zmdi zmdi-chart"></i><span>گزارشات سیستم</span></a>
+                    </li>
+                    @endcan
+
+                    @can('site-settings')
+                    <li class="treeview {{request()->routeIs('admin.setting.footer.label')
+                    || request()->routeIs('admin.setting.footer.logo') || request()->routeIs('admin.setting.footer.social') ? 'active' : ''}} ">
+                        <a href="javascript:void(0)"><i class="zmdi zmdi-settings"></i> <span>تنظیمات</span> <i
+                                class="fa fa-angle-left"></i></a>
+                        <ul class="treeview-menu">
+                            <!-- تنظیمات فوتر-برچسب ها-تنظیمات عمومی(لوگو و ...) -  -->
+                            @canany(['setting-footer-label','setting-footer-social','setting-footer-logo','setting-footer-menu','setting-footer-apps'])
+                                <li><a style="color: {{request()->routeIs('admin.setting.footer.label')
+                     || request()->routeIs('admin.setting.footer.logo') || request()->routeIs('admin.setting.footer.social') ? '#54c6d0' : ''}}" href="{{route('admin.setting.footer.label')}}">تنظیمات فوتر سایت</a></li>
+                            @endcanany
+                            <!-- استان و شهر و ... -  -->
+                            @can('site-settings')
+                            <li><a href="{{request()->url()}}">تنظیمات فروشگاه</a></li>
+                            @endcan
+                        </ul>
+                    </li>
+                    @endcan
                     {{-- <li class="treeview">
                         <a href="javascript:void(0)"><i class="fa fa-newspaper-o"></i> <span>مقالات</span> <i class="fa fa-angle-left"></i></a>
                         <ul class="treeview-menu">
@@ -141,22 +181,7 @@
                         </ul>
                     </li> --}}
 
-                    <li>
-                        <a style="color: {{request()->routeIs('admin.logs') ? '#54c6d0' : '' }}" href="{{route('admin.logs')}}">
-                            <i class="zmdi zmdi-chart"></i><span>گزارشات سیستم</span></a>
-                    </li>
 
-                    <li class="treeview {{request()->routeIs('admin.setting.footer.label')
-                    || request()->routeIs('admin.setting.footer.logo') || request()->routeIs('admin.setting.footer.social') ? 'active' : ''}} ">
-                        <a href="javascript:void(0)"><i class="zmdi zmdi-settings"></i> <span>تنظیمات</span> <i class="fa fa-angle-left"></i></a>
-                        <ul class="treeview-menu">
-                            <!-- تنظیمات فوتر-برچسب ها-تنظیمات عمومی(لوگو و ...) -  -->
-                            <li><a style="color: {{request()->routeIs('admin.setting.footer.label')
-                     || request()->routeIs('admin.setting.footer.logo') || request()->routeIs('admin.setting.footer.social') ? '#54c6d0' : ''}}" href="{{route('admin.setting.footer.label')}}">تنظیمات فوتر سایت</a></li>
-                            <!-- استان و شهر و ... -  -->
-                            <li><a href="{{request()->url()}}">تنظیمات فروشگاه</a></li>
-                        </ul>
-                    </li>
                     {{-- <li><a href="#"><i class="zmdi zmdi-cloud-done"></i><span>بکاپ گیری</span></a></li> --}}
                 </ul>
             </nav>

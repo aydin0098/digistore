@@ -3,11 +3,15 @@
 namespace App\Http\Livewire\Admin\Settings\Footer;
 
 use App\Models\Admin\Log;
+use App\Models\Admin\Settings\Footer;
+use App\Models\Admin\Settings\FooterLabel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Label extends Component
 {
+    use AuthorizesRequests;
     public $upLabel;
     public $widgetLabel1;
     public $widgetLabel2;
@@ -78,7 +82,7 @@ class Label extends Component
         // $footer = $footer[0];
 
 
-
+        $this->authorize('setting-footer-label',FooterLabel::class);
         return view('livewire.admin.settings.footer.label');
     }
 

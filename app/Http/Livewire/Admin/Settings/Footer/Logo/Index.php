@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Admin\Settings\Footer\Logo;
 
 use App\Models\Admin\Log;
+use App\Models\Admin\Settings\Footer;
 use App\Models\Admin\Settings\FooterLogo;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -12,6 +14,7 @@ class Index extends Component
 {
     use WithFileUploads;
     use WithPagination;
+    use AuthorizesRequests;
 
     public $title;
     public $image;
@@ -119,6 +122,7 @@ class Index extends Component
 
     public function render()
     {
+        $this->authorize('setting-footer-logo',FooterLogo::class);
         $logos = $this->readyToLoad ? FooterLogo::where('title','LIKE','%'.$this->search.'%')->latest()->paginate(10):[];
         return view('livewire.admin.settings.footer.logo.index',compact('logos'));
     }

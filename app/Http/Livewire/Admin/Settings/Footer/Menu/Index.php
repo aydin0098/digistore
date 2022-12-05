@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Settings\Footer\Menu;
 
 use App\Models\Admin\Log;
 use App\Models\Admin\Settings\FooterMenu;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -13,6 +14,7 @@ class Index extends Component
 {
     use WithFileUploads;
     use WithPagination;
+    use AuthorizesRequests;
 
     public $title;
     public $type;
@@ -87,6 +89,7 @@ class Index extends Component
 
     public function render()
     {
+        $this->authorize('setting-footer-menu',FooterMenu::class);
         $menus = $this->readyToLoad ? FooterMenu::where('title','LIKE','%'.$this->search.'%')->latest()->paginate(10):[];
         $footer = DB::connection('mysql_settings')->table('footers')->first();
         $headerMenu[] = $footer->widgetLabel1;

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Settings\Footer\Logo;
 
 use App\Models\Admin\Log;
 use App\Models\Admin\Settings\FooterLogo;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -12,6 +13,7 @@ class Trashed extends Component
 {
     use WithFileUploads;
     use WithPagination;
+    use AuthorizesRequests;
 
     public $title;
     public $image;
@@ -65,6 +67,7 @@ class Trashed extends Component
 
     public function render()
     {
+        $this->authorize('setting-footer-logo',FooterLogo::class);
         $logos = $this->readyToLoad ? FooterLogo::where('title','LIKE','%'.$this->search.'%')->orderBy('id','desc')
             ->onlyTrashed()->paginate(10):[];
         return view('livewire.admin.settings.footer.logo.trashed',compact('logos'));
