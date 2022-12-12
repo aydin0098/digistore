@@ -18,6 +18,15 @@
                     <li class="{{request()->routeIs('admin.index') ? 'active' : '' }}"><a
                             href="{{route('admin.index')}}"><i class="zmdi zmdi-view-dashboard"></i><span>داشبورد</span></a>
                     </li>
+                    @can('manage_users')
+                    <li class="treeview {{request()->routeIs('admin.users.index') ? 'active' : '' }}">
+                        <a href="javascript:void(0)"><i class="zmdi zmdi-accounts-alt"></i> <span>کاربران</span> <i class="fa fa-angle-left"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a style="color: {{request()->routeIs('admin.users.index') ? '#54c6d0' : '' }}" href="{{route('admin.users.index')}}">لیست کاربران</a></li>
+                            <li><a href="#">افزودن کاربر</a></li>
+                        </ul>
+                    </li>
+                    @endcan
 
                     @canany(['manage_roles','manage_permissions'])
                     <li class="treeview {{request()->routeIs('admin.roles.index')
@@ -82,13 +91,7 @@
                     <li><a href="pages.html"><i class="zmdi zmdi-assignment"></i><span>صفحات</span></a></li>
                     <li><a href="menus.html"><i class="zmdi zmdi-menu"></i><span>منو ها</span></a></li>
                     <li><a href="comments.html"><i class="zmdi zmdi-comments"></i><span>نظرات</span></a></li>
-                    <li class="treeview">
-                        <a href="javascript:void(0)"><i class="zmdi zmdi-accounts-alt"></i> <span>کاربران</span> <i class="fa fa-angle-left"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="users.html">لیست کاربران</a></li>
-                            <li><a href="#">افزودن کاربر</a></li>
-                        </ul>
-                    </li>
+
                     <li class="treeview">
                         <a href="javascript:void(0)"><i class="fa fa-cube"></i> <span>فروشندگان</span> <i class="fa fa-angle-left"></i></a>
                         <ul class="treeview-menu">

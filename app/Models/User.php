@@ -6,7 +6,9 @@ use App\Models\Admin\Log;
 use App\Models\Admin\Permissions\Permission;
 use App\Models\Admin\Permissions\Role;
 use App\Models\Home\Token;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use SoapClient;
@@ -16,6 +18,7 @@ class User extends Authenticatable
 
     use HasFactory;
     use Notifiable;
+    use SoftDeletes;
 
 
     protected $connection = 'mysql';
@@ -94,6 +97,22 @@ class User extends Authenticatable
 
         return $sms_client->SendSimpleSMS2($parameters)->SendSimpleSMS2Result;
     }
+
+    public function getCreatedAtAttribute($created_at)
+    {
+        $createDate = new Verta($created_at);
+        $createDate = $createDate->format('H:i:s - Y/m/d');
+        return $createDate;
+    }
+
+    public function getUpdatedAtAttribute($updated_at)
+    {
+        $updateDate = new Verta($updated_at);
+        $updateDate = $updateDate->format('H:i:s - Y/m/d');
+        return $updateDate;
+    }
+
+
 
 
     /**

@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'mobile' => '09398933139',
                 'password' => Hash::make('123456789'),
+                'typeUser' => 'admin',
                 'profilePhoto' => asset('/home/assets/images/svg/user-profile.svg')
             ],
         ];

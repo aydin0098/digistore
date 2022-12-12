@@ -71,6 +71,35 @@ class PermissionSeeder extends Seeder
                 'description' => 'گزارشات سیستمی',
 
             ],
+            10 => [
+                'id' => 10,
+                'title' => 'manage_users',
+                'description' => 'مدیریت کاربران',
+
+            ],
+            11 => [
+                'id' => 11,
+                'title' => 'info_users',
+                'description' => 'مشاهده اطلاعات کاربر',
+
+            ],
+            12 => [
+                'id' => 12,
+                'title' => 'account_users',
+                'description' => 'ورود به پنل کاربر',
+
+            ],
+            13 => [
+                'id' => 13,
+                'title' => 'permission_users',
+                'description' => 'دسترسی کاربران',
+            ],
+            14 => [
+                'id' => 14,
+                'title' => 'buy_users',
+                'description' => 'خرید های کاربران',
+
+            ],
 
         ];
         foreach ($permissions as $permission){

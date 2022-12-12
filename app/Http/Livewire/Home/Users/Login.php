@@ -27,6 +27,7 @@ class Login extends Component
             {
                 return to_route('admin.index');
             }
+
         }
 
     }
@@ -42,7 +43,7 @@ class Login extends Component
     {
         $this->validate();
         $user = User::where('mobile', $this->mobile)->first();
-        if (isset($user)) {
+        if (isset($user) && $user->isActive==1) {
 
             if ($user->mobile_verified_at == null) {
                 $code = random_int(1000, 9999);
@@ -76,6 +77,9 @@ class Login extends Component
             } else {
                 $this->emit('toast', 'error', 'اطلاعات ورود نادرست است');
             }
+
+        } elseif ($user->isActive==0){
+            $this->emit('toast', 'error', 'اکانت کاربری شما غیر فعال است ');
 
         } else {
 

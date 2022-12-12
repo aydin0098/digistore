@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-
+     @can('manage_logs')
     <div class="col-md-8 box-margin" wire:init="loadLogs">
         <div class="card">
             <div class="card-body">
@@ -96,7 +96,7 @@
             </div>
         </div>
     </div>
-
+                @endcan
     <div class="col-md-12 col-xl-12 mb-3">
         <div class="card bg-boxshadow full-height">
             <div class="card-header bg-transparent user-area d-flex align-items-center justify-content-between">
