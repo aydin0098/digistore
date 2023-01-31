@@ -23,6 +23,7 @@ class Login extends Component
     {
         if (Auth::check())
         {
+
             if(\auth()->user()->mobile_verified_at)
             {
                 return to_route('admin.index');
@@ -73,7 +74,20 @@ class Login extends Component
             if (Hash::check($this->password, $user->password)) {
                 Auth::login($user);
                 //TODO
-                return to_route('admin.index');
+                if($user->typeUser == 'admin')
+                {
+                    return to_route('admin.index');
+                }else if ($user->typeUser == 'user'){
+
+                    return to_route('user.profile.index');
+
+                }else if ($user->typeUser == 'vendor')
+                {
+                    return "";
+                }else{
+                    $this->emit('toast', 'error', 'سطح کاربری شما تعریف نگردیده است');
+
+                }
             } else {
                 $this->emit('toast', 'error', 'اطلاعات ورود نادرست است');
             }

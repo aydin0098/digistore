@@ -8,6 +8,7 @@ use App\Models\Admin\Permissions\Role;
 use App\Models\Admin\Settings\FooterLogo;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -77,7 +78,7 @@ class Index extends Component
     {
         $user = User::find($this->deleteId);
         $user->delete();
-        Log::createLog(auth()->user()->id,'delete','نقش '.$role->title.' حذف شد');
+        Log::createLog(auth()->user()->id,'delete','نقش '.$user->name.' حذف شد');
         $this->emit('toast','success','ایتم مورد نظر به حذف شد');
 
     }
@@ -110,6 +111,61 @@ class Index extends Component
 
             $this->emit('toast','success','وضعیت به فعال شده تغییر یافت');
         }
+
+    }
+
+    public function changeStatusMobile($id)
+    {
+        $user = User::find($id);
+        if ($user->mobile_verified_at != null)
+        {
+            $user->update([
+                'mobile_verified_at' => null
+            ]);
+            Log::createLog(auth()->user()->id,'update','وضعیت موبایل کاربر '.$user->name.'  تغییر یافت');
+            $this->emit('toast','success','وضعیت به تایید نشده تغییر یافت');
+
+        }else{
+            $user->update([
+                'mobile_verified_at' => now()
+            ]);
+
+            Log::createLog(auth()->user()->id,'update','وضعیت موبایل کاربر '.$user->name.'  تغییر یافت');
+
+            $this->emit('toast','success','وضعیت به تایید شده تغییر یافت');
+        }
+
+    }
+
+    public function changeStatusEmail($id)
+    {
+        $user = User::find($id);
+        if ($user->email_verified_at != null)
+        {
+            $user->update([
+                'email_verified_at' => null
+            ]);
+            Log::createLog(auth()->user()->id,'update','وضعیت ایمیل کاربر '.$user->name.'  تغییر یافت');
+            $this->emit('toast','success','وضعیت به تایید نشده تغییر یافت');
+
+        }else{
+            $user->update([
+                'email_verified_at' => now()
+            ]);
+
+            Log::createLog(auth()->user()->id,'update','وضعیت ایمیل کاربر '.$user->name.'  تغییر یافت');
+
+            $this->emit('toast','success','وضعیت به تایید شده تغییر یافت');
+        }
+
+    }
+
+    public function loginForce($id)
+    {
+       Auth::logout();
+       Auth::loginUsingId($id);
+       return to_route('home.index');
+
 
     }
 

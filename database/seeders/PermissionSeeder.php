@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Admin\Permissions\Permission;
+use App\Models\Admin\Permissions\Role;
+use App\Models\PermissionUser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -100,21 +102,34 @@ class PermissionSeeder extends Seeder
                 'description' => 'خرید های کاربران',
 
             ],
+            15 => [
+                'id' => 15,
+                'title' => 'manage_categories',
+                'description' => 'مدیریت دسته بندی محصولات',
+
+            ],
+
 
         ];
-        foreach ($permissions as $permission){
-            $check = Permission::where('id',$permission['id'])->first();
-            if (!$check){
+        foreach ($permissions as $permission) {
+            $check = Permission::where('id', $permission['id'])->first();
+            if (!$check) {
                 Permission::create([
-                    'title' => $permission['title'] ,
+                    'title' => $permission['title'],
                     'description' => $permission['description']
                 ]);
-
                 DB::table('permission_role')->insert([
                     'role_id' => 1,
                     'permission_id' => $permission['id']
                 ]);
+                DB::table('permission_user')->insert([
+                    'user_id' => 1,
+                    'permission_id' => $permission['id']
+                ]);
+
+
             }
         }
+
     }
 }

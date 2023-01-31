@@ -1,8 +1,6 @@
 @section('title','کاربران')
 
-<div style="width: 100%;" class="row">
-
-    <div class="col-12 box-margin" wire:init="loadLogo">
+<div class="col-12 box-margin" wire:init="loadLogo">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title mb-2">لیست کاربران</h4>
@@ -39,8 +37,8 @@
                         @if($readyToLoad)
                             <tbody>
                             @foreach($users as $user)
-                                <tr>
-                                    <td><img src="{{$user->profilePhoto}}" width="50px"></td>
+                                <tr class="text-center">
+                                    <td><img src="{{asset($user->profilePhoto)}}" width="50px"></td>
                                     <td>{{$user->name}}</td>
                                     <td>
                                         @foreach($user->roles as $role)
@@ -69,23 +67,41 @@
                                             <span class="badge badge-danger"
                                                   wire:click="changeStatus({{$user->id}})">غیرفعال</span>
                                         @endif
+
+
+                                            @if($user->mobile_verified_at!= null)
+                                                <span class="badge badge-primary"
+                                                      wire:click="changeStatusMobile({{$user->id}})">تاییدیه موبایل</span>
+                                            @else
+                                                <span class="badge badge-danger"
+                                                      wire:click="changeStatusMobile({{$user->id}})">موبایل تایید نشده</span>
+                                            @endif
+
+                                            @if($user->email_verified_at!= null)
+                                                <span class="badge badge-primary"
+                                                      wire:click="changeStatusEmail({{$user->id}})">تاییدیه ایمیل</span>
+                                            @else
+                                                <span class="badge badge-danger"
+                                                      wire:click="changeStatusEmail({{$user->id}})">ایمیل تایید نشده</span>
+                                            @endif
+
                                     </td>
                                     <td>{{$user->created_at}}</td>
                                     <td>
                                         @can('info_users')
-                                            <a href="" style="font-size:20px;" title="اطلاعات کاربر"><i class="fa fa-eye" style="color:#234124;"></i></a>
+                                            <a href="{{route('admin.users.info',$user->id)}}" style="font-size:20px;" title="اطلاعات کاربر"><i class="fa fa-eye" style="color:#234124;"></i></a>
                                         @endcan
                                         @can('account_users')
-                                            <a href="" style="font-size:20px;" title="ورود به پنل کاربر"><i class="fa fa-sign-in" style="color:green;"></i></a>
+                                            <a href="" wire:click="loginForce({{$user->id}})" style="font-size:20px;" title="ورود به پنل کاربر"><i class="fa fa-sign-in" style="color:green;"></i></a>
                                         @endcan
 
                                         @can('permission_users')
-                                            <a href="" style="font-size:20px;" title="سطح دسترسی کاربر"><i class="fa fa-user-secret" style="color:darkblue;"></i></a>
+                                            <a href="{{route('admin.users.permission',$user->id)}}" style="font-size:20px;" title="سطح دسترسی کاربر"><i class="fa fa-user-secret" style="color:darkblue;"></i></a>
                                         @endcan
                                         @can('buy_users')
                                             <a href="" style="font-size:20px;" title="خرید های کاربر"><i class="fa fa-shopping-basket" style="color:rgb(115, 194, 108);"></i></a>
                                         @endcan
-                                        <a href="" style="font-size:20px;"><i class="fa fa-edit" style="color:#04a9f5;"></i></a>
+                                        <a href="{{route('admin.users.edit',$user->id)}}" style="font-size:20px;"><i class="fa fa-edit" style="color:#04a9f5;"></i></a>
                                         <a href="" style="font-size:20px;" wire:click="deleteId({{$user->id}})"
                                            data-toggle="modal"
                                            data-target="#exampleModal">
@@ -109,3 +125,4 @@
         </div><!-- end col-->
         @include('livewire.admin.include.modal')
     </div>
+

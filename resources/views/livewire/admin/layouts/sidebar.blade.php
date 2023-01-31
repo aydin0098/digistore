@@ -18,12 +18,28 @@
                     <li class="{{request()->routeIs('admin.index') ? 'active' : '' }}"><a
                             href="{{route('admin.index')}}"><i class="zmdi zmdi-view-dashboard"></i><span>داشبورد</span></a>
                     </li>
+                    <li class="treeview">
+                        <a href="javascript:void(0)"><i class="fa fa-shopping-bag"></i> <span>محصولات</span> <i class="fa fa-angle-left"></i></a>
+                        <ul class="treeview-menu {{request()->routeIs(['admin.categories.index']) ? 'active' : '' }}">
+                            @can('manage_categories')
+                            <li><a style="color: {{request()->routeIs('admin.categories.index') ? '#54c6d0' : '' }}" href="{{route('admin.categories.index')}}">دسته بندی</a></li>
+                            @endcan
+{{--                            <li><a href="product-tags.html">برچسب</a></li>--}}
+{{--                            <li><a href="products.html">لیست محصولات</a></li>--}}
+{{--                            <li><a href="#">برندها</a></li>--}}
+{{--                            <li><a href="#">رنگ ها</a></li>--}}
+{{--                            <li><a href="#">گارانتی ها</a></li>--}}
+{{--                            <li><a href="#">تنوع قیمت</a></li>--}}
+{{--                            <li><a href="#">مشخصات محصولات-مقادیر</a></li>--}}
+{{--                            <li><a href="#">پیشنهادات شگفت انگیز</a></li>--}}
+                        </ul>
+                    </li>
                     @can('manage_users')
-                    <li class="treeview {{request()->routeIs('admin.users.index') ? 'active' : '' }}">
+                    <li class="treeview {{request()->routeIs(['admin.users.index','admin.users.create']) ? 'active' : '' }}">
                         <a href="javascript:void(0)"><i class="zmdi zmdi-accounts-alt"></i> <span>کاربران</span> <i class="fa fa-angle-left"></i></a>
                         <ul class="treeview-menu">
                             <li><a style="color: {{request()->routeIs('admin.users.index') ? '#54c6d0' : '' }}" href="{{route('admin.users.index')}}">لیست کاربران</a></li>
-                            <li><a href="#">افزودن کاربر</a></li>
+                            <li><a style="color: {{request()->routeIs('admin.users.create') ? '#54c6d0' : '' }}" href="{{route('admin.users.create')}}">افزودن کاربر</a></li>
                         </ul>
                     </li>
                     @endcan
@@ -100,20 +116,7 @@
                         </ul>
                     </li>
 
-                    <li class="treeview">
-                        <a href="javascript:void(0)"><i class="fa fa-shopping-bag"></i> <span>محصولات</span> <i class="fa fa-angle-left"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="product-categories.html">دسته بندی</a></li>
-                            <li><a href="product-tags.html">برچسب</a></li>
-                            <li><a href="products.html">لیست محصولات</a></li>
-                            <li><a href="#">برندها</a></li>
-                            <li><a href="#">رنگ ها</a></li>
-                            <li><a href="#">گارانتی ها</a></li>
-                            <li><a href="#">تنوع قیمت</a></li>
-                            <li><a href="#">مشخصات محصولات-مقادیر</a></li>
-                            <li><a href="#">پیشنهادات شگفت انگیز</a></li>
-                        </ul>
-                    </li>
+
                     <li class="treeview">
                         <a href="javascript:void(0)"><i class="zmdi zmdi-file-text"></i> <span>جزییات فروشگاه</span> <i class="fa fa-angle-left"></i></a>
                         <ul class="treeview-menu">

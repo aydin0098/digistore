@@ -60,8 +60,12 @@
                                 @foreach($logs as $log)
                                     <tr role="row" class="odd">
                                         <td>{{$log->users->name}}</td>
-                                        <td>-</td>
-                                        <td>-</td>
+                                        <td>
+                                            @foreach($log->users->roles as $role)
+                                               <span class="badge badge-dark">{{$role->description}}</span>
+                                            @endforeach
+                                        </td>
+                                        <td>{{$log->users->mobile}}</td>
                                         <td>{{$log->ip}}</td>
                                         <td>
                                             @switch($log->actionType)

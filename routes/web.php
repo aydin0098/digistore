@@ -27,4 +27,15 @@ Route::get('/forget-password/verify/{id}',\App\Http\Livewire\Home\Users\ForgetPa
 Route::get('/change-password/{code}',\App\Http\Livewire\Home\Users\ChangePassword::class)->name('change.password');
 //-----------------------------------------Logout---------------------------------//
 Route::post('/logout',[\App\Http\Controllers\HomeController::class,'logout'])->name('logout');
+//--------------------------------------Users Profile----------------------------------//
+
+Route::middleware('auth')->prefix('users/profile')->group(function (){
+    Route::get('/',\App\Http\Livewire\Home\Profile\Index::class)->name('user.profile.index');
+});
+
+//Laravel Ajax
+Route::get('/ajax/index',[\App\Http\Controllers\Ajax\AjaxController::class,'index'])->name('ajax.index');
+Route::post('/ajax/store',[\App\Http\Controllers\Ajax\AjaxController::class,'store'])->name('ajax.store');
+
+
 //\Illuminate\Support\Facades\Auth::routes();
