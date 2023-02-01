@@ -13,10 +13,10 @@
             <div class="col-xl-4 box-margin">
                 <div class="card card-body">
                     <div class="row">
-                        <a href="#" class="btn btn-info col-6"
+                        <a href="{{route('admin.categories.level2.index')}}" class="btn btn-info col-6"
                            style="max-height:30px;margin-bottom:10px;border-left:2px solid white"><i class="fa fa-plus-square"></i> دسته
                             بندی سطح دو</a>
-                        <a href="#" class="btn btn-info col-6"
+                        <a href="{{route('admin.categories.level3.index')}}" class="btn btn-info col-6"
                            style="max-height:30px;margin-bottom:10px"><i class="fa fa-plus-square"></i> دسته
                             بندی سطح سه</a>
                     </div>
@@ -139,18 +139,10 @@
                                             </td>
                                             <td>
 
-                                                @if ($category->level == 1)
-                                                    <a href="{{route('admin.categories.edit',$category->id)}}"
+                                                <a href="{{route('admin.categories.edit',$category->id)}}"
                                                        class="action-icon"> <i
                                                             class="zmdi zmdi-edit zmdi-custom"></i></a>
-                                                @elseif($category->level == 2)
-                                                    <a href="#"
-                                                       class="action-icon"> <i
-                                                            class="zmdi zmdi-edit zmdi-custom"></i></a>
-                                                    <a href="#"
-                                                       class="action-icon"> <i
-                                                            class="zmdi zmdi-edit zmdi-custom"></i></a>
-                                                @endif
+
 
 
                                                 <button wire:click="deleteId({{ $category->id }})"

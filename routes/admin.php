@@ -60,5 +60,12 @@ Route::prefix('products')->group(function (){
     Route::get('/categories',App\Http\Livewire\Admin\Products\Categories\Index::class)->name('admin.categories.index');
     Route::get('/categories/{category}/edit',App\Http\Livewire\Admin\Products\Categories\Update::class)->name('admin.categories.edit');
     Route::get('/categories/trashed',App\Http\Livewire\Admin\Products\Categories\Trashed::class)->name('admin.categories.trashed');
+    //Level2 and level3
+    Route::get('/categories/level2',App\Http\Livewire\Admin\Products\Categories\Level2\Index::class)->name('admin.categories.level2.index');
+    Route::get('/categories/level3',App\Http\Livewire\Admin\Products\Categories\Level3\Index::class)->name('admin.categories.level3.index');
+
+    Route::get('/categories/level2/{category}/edit',App\Http\Livewire\Admin\Products\Categories\Level2\Update::class)->name('admin.categories.level2.edit');
+    Route::get('/categories/level3/{category}/edit',App\Http\Livewire\Admin\Products\Categories\Level3\Update::class)->name('admin.categories.level3.edit');
+
 });
 
