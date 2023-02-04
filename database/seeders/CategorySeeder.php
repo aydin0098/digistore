@@ -109,6 +109,100 @@ class CategorySeeder extends Seeder
                 'isActive' => 1,
 
             ],
+            8 => [
+                'id' => 8,
+                'title' => 'لوازم جانبی گوشی',
+                'parent_id' => 1,
+                'level' => 2,
+                'description' => 'لوازم جانبی گوشی',
+                'metaTitle' => null,
+                'metaDescription' => null,
+                'isActive' => 1,
+                'image' => null,
+                'icon' =>null,
+
+            ],
+            9 => [
+                'id' => 9,
+                'title' => 'گوشی موبایل',
+                'parent_id' => 1,
+                'level' => 2,
+                'description' => 'گوشی موبایل',
+                'metaTitle' => null,
+                'metaDescription' => null,
+                'isActive' => 1,'image' => null,
+                'icon' =>null,
+
+
+            ],
+
+            10 => [
+                'id' => 10,
+                'title' => 'واقعیت مجازی',
+                'parent_id' => 1,
+                'level' => 2,
+                'description' => 'واقعیت مجازی',
+                'metaTitle' => null,
+                'metaDescription' => null,
+                'isActive' => 1,
+                'image' => null,
+                'icon' =>null,
+
+            ],
+
+            11 => [
+                'id' => 11,
+                'title' => 'کیف و کاور گوشی',
+                'parent_id' => 8,
+                'level' => 3,
+                'description' => 'کیف و کاور گوشی',
+                'metaTitle' => null,
+                'metaDescription' => null,
+                'isActive' => 1,
+                'image' => null,
+                'icon' =>null,
+
+            ],
+            12 => [
+                'id' => 12,
+                'title' => 'پاور بانک',
+                'parent_id' => 8,
+                'level' => 3,
+                'description' => 'پاور بانک',
+                'metaTitle' => null,
+                'metaDescription' => null,
+                'isActive' => 1,
+                'image' => null,
+                'icon' =>null,
+
+            ],
+            13 => [
+                'id' => 13,
+                'title' => 'سامسونگ',
+                'parent_id' => 9,
+                'level' => 3,
+                'description' => 'سامسونگ',
+                'metaTitle' => null,
+                'metaDescription' => null,
+                'isActive' => 1,
+                'image' => null,
+                'icon' =>null,
+
+            ],
+            14 => [
+                'id' => 14,
+                'title' => 'اپل',
+                'parent_id' => 9,
+                'level' => 3,
+                'description' => 'اپل',
+                'metaTitle' => null,
+                'image' => null,
+                'icon' =>null,
+                'metaDescription' => null,
+                'isActive' => 1,
+
+            ],
+
 
 
 

@@ -108,6 +108,19 @@ class PermissionSeeder extends Seeder
                 'description' => 'مدیریت دسته بندی محصولات',
 
             ],
+            16 => [
+                'id' => 16,
+                'title' => 'manage_brands',
+                'description' => 'مدیریت برند محصولات',
+
+            ],
+
+            17 => [
+                'id' => 17,
+                'title' => 'manage_warranties',
+                'description' => 'مدیریت گارانتی محصولات',
+
+            ],
 
 
         ];

@@ -67,5 +67,14 @@ Route::prefix('products')->group(function (){
     Route::get('/categories/level2/{category}/edit',App\Http\Livewire\Admin\Products\Categories\Level2\Update::class)->name('admin.categories.level2.edit');
     Route::get('/categories/level3/{category}/edit',App\Http\Livewire\Admin\Products\Categories\Level3\Update::class)->name('admin.categories.level3.edit');
 
+    //Admin Brands
+    Route::get('/brands',App\Http\Livewire\Admin\Products\Brands\Index::class)->name('admin.brands.index');
+    Route::get('/brands/{brand}/edit',App\Http\Livewire\Admin\Products\Brands\Edit::class)->name('admin.brands.edit');
+
+    //Admin Brands
+    Route::get('/warranties',App\Http\Livewire\Admin\Products\Warranties\Index::class)->name('admin.warranties.index');
+    Route::get('/warranties/{warranty}/edit',App\Http\Livewire\Admin\Products\Warranties\Edit::class)->name('admin.warranties.edit');
+    Route::get('/warranties/trashed',App\Http\Livewire\Admin\Products\Warranties\Trashed::class)->name('admin.warranties.trashed');
+
 });
 
