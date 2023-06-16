@@ -47,6 +47,11 @@ return new class extends Migration
         Schema::connection('mysql_products')->create('products', function (Blueprint $table) {
             $table->id();
             $table->longText('title');
+            $table->longText('ename');
+            $table->longText('slug');
+            $table->text('image')->nullable();
+
+
 
             $table->unsignedBigInteger('level1_id');
             $table->foreign('level1_id')->references('id')->on('digistore_products.categories');

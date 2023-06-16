@@ -56,6 +56,11 @@ Route::get('/users/permissions/{user}',App\Http\Livewire\Admin\Users\Permission:
 Route::get('/users/info/{user}',App\Http\Livewire\Admin\Users\Info::class)->name('admin.users.info');
         //---------------------------Admin Products Routes---------------------------------//
 Route::prefix('products')->group(function (){
+    //Admin Products
+    Route::get('/',App\Http\Livewire\Admin\Products\Index::class)->name('admin.products.index');
+    Route::get('/create',App\Http\Livewire\Admin\Products\Create::class)->name('admin.products.create');
+    Route::get('/{product}/edit',App\Http\Livewire\Admin\Products\Edit::class)->name('admin.products.edit');
+    Route::get('/trashed',App\Http\Livewire\Admin\Products\Trashed::class)->name('admin.products.trashed');
     //Admin Categories
     Route::get('/categories',App\Http\Livewire\Admin\Products\Categories\Index::class)->name('admin.categories.index');
     Route::get('/categories/{category}/edit',App\Http\Livewire\Admin\Products\Categories\Update::class)->name('admin.categories.edit');
@@ -71,10 +76,14 @@ Route::prefix('products')->group(function (){
     Route::get('/brands',App\Http\Livewire\Admin\Products\Brands\Index::class)->name('admin.brands.index');
     Route::get('/brands/{brand}/edit',App\Http\Livewire\Admin\Products\Brands\Edit::class)->name('admin.brands.edit');
 
-    //Admin Brands
+    //Admin Warranties
     Route::get('/warranties',App\Http\Livewire\Admin\Products\Warranties\Index::class)->name('admin.warranties.index');
     Route::get('/warranties/{warranty}/edit',App\Http\Livewire\Admin\Products\Warranties\Edit::class)->name('admin.warranties.edit');
     Route::get('/warranties/trashed',App\Http\Livewire\Admin\Products\Warranties\Trashed::class)->name('admin.warranties.trashed');
+    //Admin Colors
+    Route::get('/colors',App\Http\Livewire\Admin\Products\Colors\Index::class)->name('admin.colors.index');
+    Route::get('/colors/{color}/edit',App\Http\Livewire\Admin\Products\Colors\Edit::class)->name('admin.colors.edit');
+    Route::get('/colors/trashed',App\Http\Livewire\Admin\Products\Colors\Trashed::class)->name('admin.colors.trashed');
 
 });
 

@@ -122,6 +122,20 @@ class PermissionSeeder extends Seeder
 
             ],
 
+            18 => [
+                'id' => 18,
+                'title' => 'manage_colors',
+                'description' => 'مدیریت رنگ بندی محصولات',
+
+            ],
+
+            19 => [
+                'id' => 19,
+                'title' => 'manage_products',
+                'description' => 'مدیریت محصولات',
+
+            ],
+
 
         ];
         foreach ($permissions as $permission) {
