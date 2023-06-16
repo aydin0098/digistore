@@ -76,6 +76,11 @@ Route::prefix('products')->group(function (){
     Route::get('/brands',App\Http\Livewire\Admin\Products\Brands\Index::class)->name('admin.brands.index');
     Route::get('/brands/{brand}/edit',App\Http\Livewire\Admin\Products\Brands\Edit::class)->name('admin.brands.edit');
 
+    //Admin Attributes
+    Route::get('/attributes',App\Http\Livewire\Admin\Products\Attr\Index::class)->name('admin.attr.index');
+    Route::get('/attributes/{attribute}/edit',App\Http\Livewire\Admin\Products\Attr\Edit::class)->name('admin.attr.edit');
+    Route::get('/attributes/trashed',App\Http\Livewire\Admin\Products\Attr\Trashed::class)->name('admin.attr.trashed');
+
     //Admin Warranties
     Route::get('/warranties',App\Http\Livewire\Admin\Products\Warranties\Index::class)->name('admin.warranties.index');
     Route::get('/warranties/{warranty}/edit',App\Http\Livewire\Admin\Products\Warranties\Edit::class)->name('admin.warranties.edit');

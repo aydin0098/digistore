@@ -23,7 +23,10 @@
                      || request()->routeIs('admin.brands.index') || request()->routeIs('admin.brands.edit')
                      ||  request()->routeIs('admin.warranties.index') ||  request()->routeIs('admin.warranties.edit')
                      ||  request()->routeIs('admin.warranties.trashed')  ||  request()->routeIs('admin.colors.index')
-                     ||  request()->routeIs('admin.colors.edit')? 'active' : '' }}">
+                     ||  request()->routeIs('admin.colors.edit')  ||  request()->routeIs('admin.products.index')
+                     ||  request()->routeIs('admin.products.create')  ||  request()->routeIs('admin.products.edit')
+                     ||  request()->routeIs('admin.products.trashed') || request()->routeIs('admin.attr.index')
+                     ||  request()->routeIs('admin.attr.edit') ? 'active' : '' }}">
                         <a href="javascript:void(0)"><i class="fa fa-shopping-bag"></i> <span>محصولات</span> <i
                                 class="fa fa-angle-left"></i></a>
                         <ul class="treeview-menu">
@@ -35,7 +38,10 @@
                             @endcan
                             {{--                            <li><a href="product-tags.html">برچسب</a></li>--}}
                                 @can('manage_products')
-                                <li><a href="{{route('admin.products.index')}}">لیست محصولات</a></li>
+                                <li><a style="color: {{request()->routeIs('admin.products.index') ||
+                             request()->routeIs('admin.products.create') ||
+                             request()->routeIs('admin.products.edit') ? '#54c6d0' : '' }}"
+                                        href="{{route('admin.products.index')}}">لیست محصولات</a></li>
                                 @endcan
                             @can('manage_brands')
                                 <li><a style="color: {{request()->routeIs('admin.brands.index') ||
@@ -52,6 +58,12 @@
                                        href="{{route('admin.warranties.index')}}">گارانتی ها</a>
                                 </li>
                             @endcan
+                                @can('manage_attr')
+                                    <li><a style="color: {{request()->routeIs('admin.attr.index') ||
+                              request()->routeIs('admin.attr.edit') ? '#54c6d0' : '' }}"
+                                           href="{{route('admin.attr.index')}}">ویژگی ها</a>
+                                    </li>
+                                @endcan
                             {{--                            <li><a href="#">تنوع قیمت</a></li>--}}
                             {{--                            <li><a href="#">مشخصات محصولات-مقادیر</a></li>--}}
                             {{--                            <li><a href="#">پیشنهادات شگفت انگیز</a></li>--}}

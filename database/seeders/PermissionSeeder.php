@@ -135,6 +135,12 @@ class PermissionSeeder extends Seeder
                 'description' => 'مدیریت محصولات',
 
             ],
+            20 => [
+                'id' => 20,
+                'title' => 'manage_attr',
+                'description' => 'مدیریت ویژگی محصولات',
+
+            ],
 
 
         ];
